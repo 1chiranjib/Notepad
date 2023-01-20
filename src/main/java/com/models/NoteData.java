@@ -2,15 +2,15 @@ package com.models;
 
 public class NoteData {
 	
-	private long userId;
+	private String userName;
 	private String title;
 	private String note;
 	
-	public long getId() {
-		return userId;
+	public String getUserName() {
+		return userName;
 	}
-	public void setId(long id) {
-		this.userId = id;
+	public void setUserName(String id) {
+		this.userName = id;
 	}
 	public String getTitle() {
 		return title;

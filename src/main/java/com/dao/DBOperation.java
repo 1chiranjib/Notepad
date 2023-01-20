@@ -2,7 +2,7 @@ package com.dao;
 
 public interface DBOperation {
 
-	public boolean findData();
-	public boolean saveData();
+	public Object findData(Object obj);
+	public Object saveData(Object obj);
 
 }
