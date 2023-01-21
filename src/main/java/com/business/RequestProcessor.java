@@ -1,5 +1,7 @@
 package com.business;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import com.dao.NoteOperation;
@@ -8,9 +10,7 @@ import org.apache.commons.lang3.StringUtils;
 
 public class RequestProcessor {
 	
-	private RequestProcessor() {
-		
-	}
+	private RequestProcessor() {}
 	
 	public static RequestProcessor getInstance() {
 		return new RequestProcessor();
@@ -22,7 +22,17 @@ public class RequestProcessor {
 		noteData.setUserName(request.getParameter("uname"));
 		noteData.setTitle(request.getParameter("title"));
 		noteData.setNote(request.getParameter("note"));
-		
+		if(StringUtils.equalsAny(request.getRequestURI(),"/Notepad/savenote")) {
+			return addNewNote(noteData);
+		}
+		return "";
+	}
+	
+	public List<NoteData> getAllNotes() {
+		return NoteOperation.getInstance().getAllData();
+	}
+	
+	private String addNewNote(NoteData noteData) {
 		if(StringUtils.isNotEmpty(noteData.getUserName())
 				&&StringUtils.isNotEmpty(noteData.getTitle())
 				&&StringUtils.isNotEmpty(noteData.getNote())) {
@@ -32,4 +42,5 @@ public class RequestProcessor {
 		else
 			return "Empty inputs are not allowed! Please try again.";
 	}
+	
 }

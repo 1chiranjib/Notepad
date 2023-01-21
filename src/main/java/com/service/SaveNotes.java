@@ -25,6 +25,7 @@ public class SaveNotes extends HttpServlet {
 		
 		try {
 			PrintWriter writer = response.getWriter();
+			response.setContentType("text/html");
 			writer.println("<h2 style='text-align:center;'>"+afterCommit+"</h2>");
 			writer.println("<h2 style='text-align:center;'><a href='allnotes.jsp'>Click here to see all notes</h2>");
 		} catch (IOException e) {
